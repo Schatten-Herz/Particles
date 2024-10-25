@@ -104,36 +104,36 @@ fontLoader.load(
 /*
 Gui
  */
-const gui = new dat.GUI({
-    width:300,
-    title:'debug UI',
-    closeFolders: true,
-})
+// const gui = new dat.GUI({
+//     width:300,
+//     title:'debug UI',
+//     closeFolders: true,
+// })
 // gui.close()
 // gui.hide()
 
-window.addEventListener('keydown',() =>{
-    if(event.key === `h`)
-        gui.show(gui._hidden)
-})
+// window.addEventListener('keydown',() =>{
+//     if(event.key === `h`)
+//         gui.show(gui._hidden)
+// })
 
-const debugObject = {}
+// const debugObject = {}
 
 
-console.log(OrbitControls)
+// console.log(OrbitControls)
 
 //Cursor
-const cursor = {
-    x:0,
-    y:0
-}
-window.addEventListener('mousemove',(event) => {
-    cursor.x = event.clientX / sizes.width -0.5
-    cursor.y = event.clientY / sizes.height -0.5
-})
-
-
-console.log(gsap)
+// const cursor = {
+//     x:0,
+//     y:0
+// }
+// window.addEventListener('mousemove',(event) => {
+//     cursor.x = event.clientX / sizes.width -0.5
+//     cursor.y = event.clientY / sizes.height -0.5
+// })
+//
+//
+// console.log(gsap)
 
 //webgl画布
 const canvas = document.querySelector('canvas.webgl')
@@ -173,16 +173,16 @@ basic
 // material.transparent = true
 
 
-const material = new THREE.MeshStandardMaterial()
-material.metalness = 0.1
-material.roughness = 0.4
-material.envMap = environmentMapTexture
-
-material.side = THREE.DoubleSide
-
-gui.add(material,'metalness').min(0).max(1).step(0.001)
-gui.add(material,'roughness').min(0).max(1).step(0.001)
-gui.add(material,'displacementScale').min(0).max(1).step(0.001)
+// const material = new THREE.MeshStandardMaterial()
+// material.metalness = 0.1
+// material.roughness = 0.4
+// material.envMap = environmentMapTexture
+//
+// material.side = THREE.DoubleSide
+//
+// gui.add(material,'metalness').min(0).max(1).step(0.001)
+// gui.add(material,'roughness').min(0).max(1).step(0.001)
+// gui.add(material,'displacementScale').min(0).max(1).step(0.001)
 
 // const sphere = new THREE.Mesh(
 //     new THREE.SphereGeometry(0.5,256,256),
