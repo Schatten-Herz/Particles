@@ -16,27 +16,27 @@ Texture
 const textureLoader = new THREE.TextureLoader()
 const cubeTextureLoader = new THREE.CubeTextureLoader()
 
-const matcapTexture = textureLoader.load('/src/assets/textures/matcaps/8.png')
+const matcapTexture = textureLoader.load('./src/assets/textures/matcaps/8.png')
 
-const doorColorTexture = textureLoader.load('/src/assets/textures/door/color.jpg')
-const doorAlphaTexture = textureLoader.load('/src/assets/textures/door/alpha.jpg')
-const doorHeightTexture = textureLoader.load('/src/assets/textures/door/height.jpg')
-const doorNormalTexture = textureLoader.load('/src/assets/textures/door/normal.jpg')
-const doorAmbientOcclusionTexture = textureLoader.load('/src/assets/textures/door/ambientOcclusion.jpg')
-const doorMetalnessTexture = textureLoader.load('/src/assets/textures/door/metalness.jpg')
-const doorRoughnessTexture = textureLoader.load('/src/assets/textures/door/roughness.jpg')
-const gradientTextures = textureLoader.load('/src/assets/textures/gradients/5.jpg')
+const doorColorTexture = textureLoader.load('./src/assets/textures/door/color.jpg')
+const doorAlphaTexture = textureLoader.load('./src/assets/textures/door/alpha.jpg')
+const doorHeightTexture = textureLoader.load('./src/assets/textures/door/height.jpg')
+const doorNormalTexture = textureLoader.load('./src/assets/textures/door/normal.jpg')
+const doorAmbientOcclusionTexture = textureLoader.load('./src/assets/textures/door/ambientOcclusion.jpg')
+const doorMetalnessTexture = textureLoader.load('./src/assets/textures/door/metalness.jpg')
+const doorRoughnessTexture = textureLoader.load('./src/assets/textures/door/roughness.jpg')
+const gradientTextures = textureLoader.load('./src/assets/textures/gradients/5.jpg')
 gradientTextures.minFilter = THREE.NearestFilter
 gradientTextures.magFilter = THREE.NearestFilter
 gradientTextures.generateMipmaps = false
 
 const environmentMapTexture = cubeTextureLoader.load([
-    '/src/assets/textures/environmentMaps/1/px.jpg',
-    '/src/assets/textures/environmentMaps/1/nx.jpg',
-    '/src/assets/textures/environmentMaps/1/py.jpg',
-    '/src/assets/textures/environmentMaps/1/ny.jpg',
-    '/src/assets/textures/environmentMaps/1/pz.jpg',
-    '/src/assets/textures/environmentMaps/1/nz.jpg'
+    './src/assets/textures/environmentMaps/1/px.jpg',
+    './src/assets/textures/environmentMaps/1/nx.jpg',
+    './src/assets/textures/environmentMaps/1/py.jpg',
+    './src/assets/textures/environmentMaps/1/ny.jpg',
+    './src/assets/textures/environmentMaps/1/pz.jpg',
+    './src/assets/textures/environmentMaps/1/nz.jpg'
 ])
 
 // colorTexture.repeat.x = 2
@@ -54,7 +54,7 @@ font
 const fontLoader = new FontLoader
 
 fontLoader.load(
-    '/src/assets/font/helvetiker_regular.typeface.json',
+    './src/assets/font/helvetiker_regular.typeface.json',
     (font) =>{
         const textGeometry = new TextGeometry(
             'Zheng Leyi',
