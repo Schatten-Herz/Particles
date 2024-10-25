@@ -184,16 +184,16 @@ gui.add(material,'metalness').min(0).max(1).step(0.001)
 gui.add(material,'roughness').min(0).max(1).step(0.001)
 gui.add(material,'displacementScale').min(0).max(1).step(0.001)
 
-const sphere = new THREE.Mesh(
-    new THREE.SphereGeometry(0.5,256,256),
-    material
-)
-sphere.geometry.setAttribute(              //uv处理
-    'uv2',
-    new THREE.BufferAttribute(sphere.geometry.attributes.uv.array,2)
-)
-
-sphere.position.x = -1.5
+// const sphere = new THREE.Mesh(
+//     new THREE.SphereGeometry(0.5,256,256),
+//     material
+// )
+// sphere.geometry.setAttribute(              //uv处理
+//     'uv2',
+//     new THREE.BufferAttribute(sphere.geometry.attributes.uv.array,2)
+// )
+//
+// sphere.position.x = -1.5
 
 
 // const plane = new THREE.Mesh(
