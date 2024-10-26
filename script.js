@@ -176,7 +176,7 @@ material.side = THREE.DoubleSide
 
 gui.add(material,'metalness').min(0).max(1).step(0.001)
 gui.add(material,'roughness').min(0).max(1).step(0.001)
-gui.add(material,'displacementScale').min(0).max(1).step(0.001)
+// gui.add(material,'displacementScale').min(0).max(1).step(0.001)
 
 const sphere = new THREE.Mesh(
     new THREE.SphereGeometry(0.5,256,256),
