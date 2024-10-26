@@ -8,6 +8,7 @@ import {SRGBColorSpace} from "three";
 import * as dat from 'dat.gui'
 import { FontLoader} from "three/addons";
 import { TextGeometry} from "three/addons";
+import {RectAreaLightHelper} from "three/addons";
 
 
 /*
@@ -169,8 +170,8 @@ basic
 
 const material = new THREE.MeshStandardMaterial()
 material.metalness = 0.1
-material.roughness = 0.4
-material.envMap = environmentMapTexture
+material.roughness = 0
+// material.envMap = environmentMapTexture
 
 material.side = THREE.DoubleSide
 
@@ -195,7 +196,7 @@ const cube = new THREE.Mesh(
 
 
 const plane = new THREE.Mesh(
-    new THREE.PlaneGeometry(10,7,256,256),
+    new THREE.PlaneGeometry(30,21,256,256),
     material
 )
 plane.geometry.setAttribute(              //uv处理
@@ -220,11 +221,44 @@ scene.add(sphere,plane,torus,cube)
 /*
 Lights
  */
-const ambientLight = new THREE.AmbientLight(0xffffff,0.5)
+const ambientLight = new THREE.AmbientLight(0xffffff,0.1)
 scene.add(ambientLight)
-
 gui.add(ambientLight,'intensity').min(0.01).max(1).step(0.001)
 
+const directionalLight = new THREE.DirectionalLight(0x00fffc,1)
+directionalLight.position.set(2,2,1)
+scene.add(directionalLight)
+gui.add(directionalLight,'intensity').min(0.01).max(5).step(0.001)
+
+const hemisphereLight = new THREE.HemisphereLight(0xff0000,0x0000ff,2)  //顶光和地面光
+scene.add(hemisphereLight)
+gui.add(hemisphereLight,'intensity').min(0.01).max(5).step(0.001)
+
+const pointLight = new THREE.PointLight(0xff9000,5,3)  //点光源
+pointLight.position.set(0,0,-2)
+scene.add(pointLight)
+gui.add(pointLight,'intensity').min(0.01).max(5).step(0.001)
+
+const rectAreaLight = new THREE.RectAreaLight(0x4e00ff,10,3,1)  //面光
+rectAreaLight.position.set(1,2,0)
+scene.add(rectAreaLight)
+rectAreaLight.lookAt(new THREE.Vector3(0,0,1))
+gui.add(rectAreaLight,'intensity').min(0.01).max(10).step(0.001)
+
+const spotLight = new THREE.SpotLight(0x78ff00,10,15,Math.PI * 0.1,0.25,1)  //聚光灯   penumbra:散光
+spotLight.position.set(0,2,-3)
+scene.add(spotLight)
+spotLight.target.position.x = 0.5
+scene.add(spotLight.target)
+
+//LightHelpers
+const hemisphereLighterHelper = new THREE.HemisphereLightHelper(hemisphereLight,0.2)
+const directionalLightHelper = new THREE.DirectionalLightHelper(directionalLight,0.2)
+const pointLightHelper = new THREE.PointLightHelper(pointLight,0.2)
+const spotLightHelper = new THREE.SpotLightHelper(spotLight,0.2)
+const rectAreaLightHelper = new RectAreaLightHelper(rectAreaLight)
+
+scene.add(hemisphereLighterHelper,directionalLightHelper,pointLightHelper,spotLightHelper,rectAreaLightHelper)
 
 /*
 GUI
