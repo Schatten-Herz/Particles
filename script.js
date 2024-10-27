@@ -183,17 +183,23 @@ const sphere = new THREE.Mesh(
     new THREE.SphereGeometry(0.5,256,256),
     material
 )
+sphere.castShadow = true
+sphere.receiveShadow = true
+
 sphere.geometry.setAttribute(              //uv处理
     'uv2',
     new THREE.BufferAttribute(sphere.geometry.attributes.uv.array,2)
 )
 
 sphere.position.x = -2
+
+
 const cube = new THREE.Mesh(
     new THREE.BoxGeometry(1,1,1,1),
     material
 )
-
+cube.castShadow = true
+cube.receiveShadow = true
 
 const plane = new THREE.Mesh(
     new THREE.PlaneGeometry(30,21,256,256),
@@ -203,6 +209,9 @@ plane.geometry.setAttribute(              //uv处理
     'uv2',
     new THREE.BufferAttribute(plane.geometry.attributes.uv.array,2)
 )
+plane.castShadow = false
+plane.receiveShadow = true
+
 plane.rotation.x =- Math.PI / 2
 plane.position.y = -1.5
 
@@ -214,6 +223,9 @@ torus.geometry.setAttribute(              //uv处理
     'uv2',
     new THREE.BufferAttribute(torus.geometry.attributes.uv.array,2)
 )
+torus.castShadow = true
+torus.receiveShadow = true
+
 torus.position.x = 2
 scene.add(sphere,plane,torus,cube)
 
@@ -225,19 +237,39 @@ const ambientLight = new THREE.AmbientLight(0xffffff,0.1)
 scene.add(ambientLight)
 gui.add(ambientLight,'intensity').min(0.01).max(1).step(0.001)
 
+
 const directionalLight = new THREE.DirectionalLight(0x00fffc,1)
-directionalLight.position.set(2,2,1)
+directionalLight.position.set(2,2,-1)
 scene.add(directionalLight)
 gui.add(directionalLight,'intensity').min(0.01).max(5).step(0.001)
+directionalLight.castShadow = true
+
+directionalLight.shadow.mapSize.width = 1024
+directionalLight.shadow.mapSize.height = 1024
+directionalLight.shadow.camera.near = 1
+directionalLight.shadow.camera.far = 10
+directionalLight.shadow.camera.top = 3
+directionalLight.shadow.camera.right = 3
+directionalLight.shadow.camera.bottom = -3
+directionalLight.shadow.camera.left = -3
+directionalLight.shadow.radius = 5
+
+const directionalLightCameraHelper = new THREE.CameraHelper(directionalLight.shadow.camera)
+directionalLightCameraHelper.visible = false
+scene.add(directionalLightCameraHelper)
+
 
 const hemisphereLight = new THREE.HemisphereLight(0xff0000,0x0000ff,2)  //顶光和地面光
 scene.add(hemisphereLight)
 gui.add(hemisphereLight,'intensity').min(0.01).max(5).step(0.001)
 
+
 const pointLight = new THREE.PointLight(0xff9000,5,3)  //点光源
 pointLight.position.set(0,0,-2)
 scene.add(pointLight)
 gui.add(pointLight,'intensity').min(0.01).max(5).step(0.001)
+pointLight.castShadow = true
+
 
 const rectAreaLight = new THREE.RectAreaLight(0x4e00ff,10,3,1)  //面光
 rectAreaLight.position.set(1,2,0)
@@ -245,11 +277,13 @@ scene.add(rectAreaLight)
 rectAreaLight.lookAt(new THREE.Vector3(0,0,1))
 gui.add(rectAreaLight,'intensity').min(0.01).max(10).step(0.001)
 
+
 const spotLight = new THREE.SpotLight(0x78ff00,10,15,Math.PI * 0.1,0.25,1)  //聚光灯   penumbra:散光
 spotLight.position.set(0,2,-3)
 scene.add(spotLight)
 spotLight.target.position.x = 0.5
 scene.add(spotLight.target)
+spotLight.castShadow = true
 
 //LightHelpers
 const hemisphereLighterHelper = new THREE.HemisphereLightHelper(hemisphereLight,0.2)
@@ -370,6 +404,8 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(sizes.width,sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 renderer.antialias = true
+renderer.shadowMap.enabled = true
+renderer.shadowMap.type = THREE.PCFSoftShadowMap
 
 // //Time
 // let time = Date.now()
