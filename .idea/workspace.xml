@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="45357efd-26f8-4c03-92f7-8dfcbfe226f5" name="更改" comment="1">
+      <change afterPath="$PROJECT_DIR$/src/assets/models/Room/Fr6.glb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/script.js" afterDir="false" />
     </list>
@@ -60,7 +61,7 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;G:/3jsPro/tjs/src/assets/font&quot;,
+    &quot;last_opened_file_path&quot;: &quot;G:/3jsPro/tjs/src/assets/models/Room&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -77,6 +78,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\3jsPro\tjs\src\assets\models\Room" />
       <recent name="G:\3jsPro\tjs\src\assets\font" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -117,7 +119,14 @@
       <workItem from="1729920229818" duration="339000" />
       <workItem from="1729920700159" duration="7003000" />
       <workItem from="1729946933699" duration="3000" />
-      <workItem from="1729992980241" duration="2140000" />
+      <workItem from="1729992980241" duration="5055000" />
+      <workItem from="1730020192903" duration="19000" />
+      <workItem from="1730092640434" duration="6558000" />
+      <workItem from="1730112440739" duration="53000" />
+      <workItem from="1730113477183" duration="490000" />
+      <workItem from="1730114163424" duration="570000" />
+      <workItem from="1730115681892" duration="49000" />
+      <workItem from="1730177907031" duration="6881000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <option name="closed" value="true" />
@@ -319,7 +328,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729945977174</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="1">
+      <option name="closed" value="true" />
+      <created>1729995659427</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1729995659427</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
