@@ -12,15 +12,55 @@ import {RectAreaLightHelper} from "three/addons";
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 
+
+//Scene
+const scene = new THREE.Scene()
+
 /*
 Texture
  */
-
-
+const textureLoader = new THREE.TextureLoader()
+const particlesTexture = textureLoader.load('src/assets/textures/particles/2.png')
 
 /*
-font
+Particles
  */
+//Geometry
+const particlesGeometry = new THREE.BufferGeometry()
+const count = 10000
+
+const positions = new Float32Array(count * 3)
+const colors = new Float32Array(count * 3)
+
+for (let i = 0; i < count * 3; i++) {
+    positions[i] = (Math.random() - 0.5) * 15
+    colors[i] = Math.random()
+}
+
+particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions,3))
+particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colors,3))
+
+
+//Material
+const particlesMaterial = new THREE.PointsMaterial({
+    size: 0.2,
+    sizeAttenuation: true,
+})
+// particlesMaterial.color = new THREE.Color('#ff88cc')
+particlesMaterial.transparent = true
+particlesMaterial.vertexColors = true
+
+// particlesMaterial.alphaTest = 0.001
+// particlesMaterial.depthTest = false
+particlesMaterial.depthWrite = false
+particlesMaterial.blending = THREE.AdditiveBlending
+
+particlesMaterial.alphaMap = particlesTexture
+
+//Points
+const particles = new THREE.Points(particlesGeometry, particlesMaterial)
+scene.add(particles);
+
 
 
 /*
@@ -58,9 +98,6 @@ console.log(gsap)
 
 //webgl画布
 const canvas = document.querySelector('canvas.webgl')
-
-//Scene
-const scene = new THREE.Scene()
 
 
 //fog
@@ -143,7 +180,6 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 renderer.antialias = true
 renderer.shadowMap.enabled = true
 renderer.shadowMap.type = THREE.PCFSoftShadowMap
-renderer.setClearColor('#282637')
 
 
 //Clock
